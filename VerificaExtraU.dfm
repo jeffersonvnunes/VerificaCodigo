@@ -14,17 +14,17 @@ object VerificaExtraF: TVerificaExtraF
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter
-    Left = 512
+    Left = 520
     Top = 0
     Width = 6
-    Height = 493
+    Height = 504
     Align = alRight
   end
   object Panel1: TPanel
-    Left = 518
+    Left = 526
     Top = 0
     Width = 447
-    Height = 493
+    Height = 504
     Align = alRight
     TabOrder = 0
     object Label1: TLabel
@@ -266,16 +266,16 @@ object VerificaExtraF: TVerificaExtraF
   object Panel2: TPanel
     Left = 0
     Top = 0
-    Width = 512
-    Height = 493
+    Width = 520
+    Height = 504
     Align = alClient
     Caption = 'Panel2'
     TabOrder = 1
     object memoArquivos: TMemo
       Left = 1
       Top = 1
-      Width = 510
-      Height = 491
+      Width = 518
+      Height = 502
       Align = alClient
       ScrollBars = ssVertical
       TabOrder = 0
