@@ -76,7 +76,7 @@ var
   vTexto: String;
 begin
   vComando := 'hg status -R '+edRepositorio.Text+
-    ' --no-status --change --rev "branch('+edRamoAnalise.Text+')" > listaCommite.txt';
+    ' --no-status --rev "branch('+edRamoAnalise.Text+')" > listaCommite.txt';
 
   ExecutaComando(vComando);
 

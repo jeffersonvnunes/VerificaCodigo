@@ -1,0 +1,2 @@
+db1kernel\cliente\forms\OpImportacaoNotaFiscalEdig.pas
+db1kernel\objetosSql\edig_nfe\BASE_ERP\P_INCLUI_NF_REFERENCIA.sql
