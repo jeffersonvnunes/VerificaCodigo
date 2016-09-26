@@ -1,6 +1,6 @@
 object VerificaExtraF: TVerificaExtraF
-  Left = 384
-  Top = 200
+  Left = 401
+  Top = 170
   Width = 981
   Height = 531
   Caption = 'Verifica Extra'
@@ -28,7 +28,7 @@ object VerificaExtraF: TVerificaExtraF
     Align = alRight
     TabOrder = 0
     object Label1: TLabel
-      Left = 6
+      Left = 8
       Top = 10
       Width = 83
       Height = 13
@@ -55,6 +55,27 @@ object VerificaExtraF: TVerificaExtraF
       Height = 13
       Caption = 'Revis'#227'o Base'
     end
+    object Label5: TLabel
+      Left = 9
+      Top = 302
+      Width = 123
+      Height = 13
+      Caption = 'Programa de Compara'#231#227'o'
+    end
+    object Label6: TLabel
+      Left = 9
+      Top = 350
+      Width = 141
+      Height = 13
+      Caption = 'Programa de Edi'#231#227'o de Texto'
+    end
+    object Label7: TLabel
+      Left = 211
+      Top = 113
+      Width = 195
+      Height = 13
+      Caption = '3 - Duplo Clique no arquivo para verificar.'
+    end
     object edRamoAnalise: TEdit
       Left = 270
       Top = 26
@@ -70,33 +91,34 @@ object VerificaExtraF: TVerificaExtraF
       TabOrder = 1
     end
     object edPastaDestino: TEdit
-      Left = 9
+      Left = 8
       Top = 71
       Width = 227
       Height = 21
       TabOrder = 2
+      Text = '*.*'
     end
     object btListarArquivos: TButton
       Left = 9
       Top = 108
-      Width = 75
+      Width = 112
       Height = 25
-      Caption = 'Listar Arquivos'
+      Caption = '1 - Listar Arquivos'
       TabOrder = 3
       OnClick = btListarArquivosClick
     end
     object btCopiar: TButton
-      Left = 255
+      Left = 127
       Top = 108
       Width = 75
       Height = 25
-      Caption = 'Copiar'
+      Caption = '2 - Copiar'
       TabOrder = 4
       OnClick = btCopiarClick
     end
     object btLimparLista: TButton
-      Left = 13
-      Top = 458
+      Left = 9
+      Top = 456
       Width = 75
       Height = 25
       Caption = 'Limpar Lista'
@@ -107,7 +129,7 @@ object VerificaExtraF: TVerificaExtraF
       Left = 237
       Top = 24
       Width = 23
-      Height = 25
+      Height = 23
       TabOrder = 6
       OnClick = btPastaRepositorioClick
       Glyph.Data = {
@@ -183,7 +205,7 @@ object VerificaExtraF: TVerificaExtraF
       Left = 237
       Top = 69
       Width = 23
-      Height = 25
+      Height = 23
       TabOrder = 7
       OnClick = btPastaDestinoClick
       Glyph.Data = {
@@ -259,8 +281,30 @@ object VerificaExtraF: TVerificaExtraF
       Left = 270
       Top = 71
       Width = 168
-      Height = 21
+      Height = 22
       TabOrder = 8
+    end
+    object edtProgramCompar: TEdit
+      Left = 9
+      Top = 320
+      Width = 424
+      Height = 22
+      Hint = 'Informe o caminho do executavel de compara'#231#227'o'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 9
+      Text = 'winmergeu.exe'
+    end
+    object edtProgramEdit: TEdit
+      Left = 9
+      Top = 368
+      Width = 424
+      Height = 22
+      Hint = 'Informe o caminho do executavel de edi'#231#227'o de texto.'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 10
+      Text = 'notepad.exe'
     end
   end
   object Panel2: TPanel
@@ -271,14 +315,15 @@ object VerificaExtraF: TVerificaExtraF
     Align = alClient
     Caption = 'Panel2'
     TabOrder = 1
-    object memoArquivos: TMemo
+    object lbArquivos: TListBox
       Left = 1
       Top = 1
       Width = 518
       Height = 502
       Align = alClient
-      ScrollBars = ssVertical
+      ItemHeight = 13
       TabOrder = 0
+      OnDblClick = lbArquivosDblClick
     end
   end
 end

@@ -1,0 +1,19 @@
+Manual de utilização:
+
+0. Ter um programa de Comparaçaõ instalado, recomendamos o WinMerge.
+
+1. Informe a Pasta do repositorio do qual a NF foi realizada e deseja verificar.
+
+2. Especifique o ramo de Analise.
+
+3. Informe a pasta destino (uma pasta temporária para a copia dos arquivos).
+
+4. Clique em listar e ira mostrar a lista de arquivos alterados.
+
+5. Clique em copiar para copiar os arquivos Originais e Alterados para a pasta indicada.
+
+6. Para verificar o arquivo, dê um duplo clique na lista a esquerda.
+
+Observações:
+	1 . Caso queira podera ser alterado o programa de comparação comforme campo indicado.
+	2 . Caso queria podera ser alterado o programa de edição de texto conforme campo indicado.
