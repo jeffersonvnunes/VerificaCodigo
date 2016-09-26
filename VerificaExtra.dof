@@ -134,8 +134,6 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
-[Excluded Packages]
-c:\delphi\Bin\dcltee70.bpl=TeeChart Components
 [HistoryLists\hlDebugSourcePath]
 Count=4
 Item0=C:\DB1\Padrao\repositorio\;C:\DB1\Padrão\componentes\conexao\
@@ -143,10 +141,11 @@ Item1=C:\DB1\Comum\DB1ServiceFramework\BasicServices\;C:\DB1\Comum\DB1ServiceFra
 Item2=C:\DB1\Comum\DB1ServiceFramework\BasicServices\
 Item3=C:\DB1\Padrao\repositorio\
 [HistoryLists\hlConditionals]
-Count=3
-Item0=SISTEMAUNICO; MULTIBANCO;
-Item1=MULTIBANCO;
-Item2=SISTEMAUNICO;
+Count=4
+Item0=GerenciadorRelatorios
+Item1=SISTEMAUNICO; MULTIBANCO;
+Item2=MULTIBANCO;
+Item3=SISTEMAUNICO;
 [HistoryLists\hlUnitAliases]
 Count=1
 Item0=WinTypes=Windows;WinProcs=Windows;DbiTypes=BDE;DbiProcs=BDE;DbiErrs=BDE;
@@ -165,7 +164,7 @@ Item0=.
 Count=1
 Item0=.
 [Exception Log]
-EurekaLog Version=601
+EurekaLog Version=6024
 Activate=0
 Activate Handle=1
 Save Log File=1

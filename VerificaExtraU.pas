@@ -4,14 +4,14 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, ExtCtrls, Mask, DB1ToolEdit, Buttons;
+  Dialogs, StdCtrls, ExtCtrls, Mask, DB1ToolEdit, Buttons, ComCtrls,
+  BtnListB;
 
 type
   TVerificaExtraF = class(TForm)
     Panel1: TPanel;
     Splitter1: TSplitter;
     Panel2: TPanel;
-    memoArquivos: TMemo;
     Label1: TLabel;
     Label2: TLabel;
     edRamoAnalise: TEdit;
@@ -25,11 +25,18 @@ type
     btPastaDestino: TBitBtn;
     Label4: TLabel;
     edRevisaoBase: TEdit;
+    lbArquivos: TListBox;
+    edtProgramCompar: TEdit;
+    Label5: TLabel;
+    Label6: TLabel;
+    edtProgramEdit: TEdit;
+    Label7: TLabel;
     procedure btLimparListaClick(Sender: TObject);
     procedure btListarArquivosClick(Sender: TObject);
     procedure btCopiarClick(Sender: TObject);
     procedure btPastaRepositorioClick(Sender: TObject);
     procedure btPastaDestinoClick(Sender: TObject);
+    procedure lbArquivosDblClick(Sender: TObject);
   private
     procedure ExecutaComando(const AComando: String);
   public
@@ -47,7 +54,8 @@ uses Shellapi, FileCtrl;
 
 procedure TVerificaExtraF.btLimparListaClick(Sender: TObject);
 begin
-  memoArquivos.Clear;
+  lbArquivos.Clear;
+
 end;
 
 procedure TVerificaExtraF.ExecutaComando(const AComando: String);
@@ -86,11 +94,11 @@ begin
     begin
       vArquivo.LoadFromFile(ExtractFilePath(ParamStr(0))+'\listaCommite.txt');
 
-      memoArquivos.Clear;
+      lbArquivos.Clear;
 
       for vIndex := 0 to vArquivo.Count -1 do
       begin
-        memoArquivos.Lines.Add(edRepositorio.Text+'\'+vArquivo.Strings[vIndex]);
+        lbArquivos.Items.Insert(vIndex,edRepositorio.Text+'\'+vArquivo.Strings[vIndex]);
       end;
     end;
 
@@ -145,6 +153,7 @@ var
 
 
         CopyFile(PAnsiChar(vListaArquivos.Strings[i]),PAnsiChar(edPastaDestino.Text+'/'+vNomeArquivo),false);
+
       end;
     end;
   end;
@@ -157,7 +166,8 @@ begin
   vListaArquivos := TStringList.Create;
   vListaArquivos.Sorted := True;
   vListaArquivos.Duplicates := dupIgnore;
-  vListaArquivos.Text := memoArquivos.Text;
+  //vListaArquivos.Text := memoArquivos.Text;
+  vListaArquivos.Text := lbArquivos.Items.Text;
 
   CopiarArquivos('ALTERADO');
 
@@ -192,6 +202,45 @@ begin
   begin
     edPastaDestino.Text := vDiretorio;
   end;
+
+end;
+
+procedure TVerificaExtraF.lbArquivosDblClick(Sender: TObject);
+var
+    vNomeArquivo
+    ,filename
+    ,vExtensao
+    ,vNomeArquivoOriginal
+    ,vNomeArquivoAlterado: string;
+
+begin
+    if lbArquivos.ItemIndex = -1 then
+      Exit;
+
+
+    vExtensao := ExtractFileExt(lbArquivos.Items[lbArquivos.ItemIndex]);
+    vNomeArquivo := ExtractFileName(lbArquivos.Items[lbArquivos.ItemIndex]);
+
+    vNomeArquivoOriginal := edPastaDestino.text+'\'+StringReplace(vNomeArquivo,vExtensao,'_ORIGINAL'+vExtensao,[rfReplaceAll,rfIgnoreCase]);
+    vNomeArquivoAlterado := edPastaDestino.text+'\'+StringReplace(vNomeArquivo,vExtensao,'_ALTERADO'+vExtensao,[rfReplaceAll,rfIgnoreCase]);;
+
+     if ((FileExists(vNomeArquivoOriginal)) and (FileExists(vNomeArquivoAlterado)))then
+     begin
+        filename := edtProgramCompar.Text;
+        ShellExecute(handle,'open',PChar(filename),PChar(vNomeArquivoOriginal+' '+vNomeArquivoAlterado),'',SW_SHOWNORMAL);
+     end
+     else if (FileExists(vNomeArquivoOriginal)) then
+     begin
+        filename := edtProgramEdit.text;
+        ShellExecute(handle,'open',PChar(filename),PChar(vNomeArquivoOriginal),'',SW_SHOWNORMAL);
+     end
+     else
+     begin if (FileExists(vNomeArquivoAlterado)) then
+       filename := edtProgramEdit.text;
+       ShellExecute(handle,'open',PChar(filename),PChar(vNomeArquivoAlterado),'',SW_SHOWNORMAL);
+     end;
+
+
 
 end;
 

@@ -1,7 +1,8 @@
-revisão:      9117:ca6918e3eede
-ramo:         DesenvEdig
-pai:          9108:cfd53c522fee
-usuário:      edsonjunior
-data:         Fri Mar 18 13:59:47 2016 -0300
-sumário:      [ERP_DIST][3841] - [HOMO] - NOTA FISCAL CALCULANDO PARTILHA QUANDO NÃO DEVERIA
+revisão:      1272:df02f24515ce
+ramo:         develop
+pai:          1268:cab3d2ed193b
+pai:          1271:777c8df0d6f9
+usuário:      David.Corbetta
+data:         Mon Sep 19 17:04:11 2016 -0300
+sumário:      [ERP_DESENVOL][4577] - Mesclagem da Patch.1.24.8 com a develop
 
