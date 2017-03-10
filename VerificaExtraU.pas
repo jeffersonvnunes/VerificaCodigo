@@ -55,7 +55,6 @@ uses Shellapi, FileCtrl;
 procedure TVerificaExtraF.btLimparListaClick(Sender: TObject);
 begin
   lbArquivos.Clear;
-
 end;
 
 procedure TVerificaExtraF.ExecutaComando(const AComando: String);
@@ -122,13 +121,11 @@ begin
           Break;
         end;
       end;
-
     end;
     
   finally
     vArquivo.Free;
   end;
-
 end;
 
 procedure TVerificaExtraF.btCopiarClick(Sender: TObject);
@@ -147,11 +144,7 @@ var
       begin
         vExtensao := ExtractFileExt(vListaArquivos.Strings[i]);
         vNomeArquivo := ExtractFileName(vListaArquivos.Strings[i]);
-
-
         vNomeArquivo := StringReplace(vNomeArquivo,vExtensao,'_'+ASufixo+vExtensao,[rfReplaceAll,rfIgnoreCase]);
-
-
         CopyFile(PAnsiChar(vListaArquivos.Strings[i]),PAnsiChar(edPastaDestino.Text+'/'+vNomeArquivo),false);
 
       end;
@@ -166,15 +159,11 @@ begin
   vListaArquivos := TStringList.Create;
   vListaArquivos.Sorted := True;
   vListaArquivos.Duplicates := dupIgnore;
-  //vListaArquivos.Text := memoArquivos.Text;
   vListaArquivos.Text := lbArquivos.Items.Text;
 
   CopiarArquivos('ALTERADO');
-
   ExecutaComando('hg update -R '+edRepositorio.Text+' --rev '+edRevisaoBase.Text+' --clean --quiet');
-
   CopiarArquivos('ORIGINAL');
-
   ExecutaComando('hg update -R '+edRepositorio.Text+' --rev '+edRamoAnalise.Text+' --clean --quiet');
 end;
 
@@ -202,7 +191,6 @@ begin
   begin
     edPastaDestino.Text := vDiretorio;
   end;
-
 end;
 
 procedure TVerificaExtraF.lbArquivosDblClick(Sender: TObject);
@@ -212,11 +200,9 @@ var
     ,vExtensao
     ,vNomeArquivoOriginal
     ,vNomeArquivoAlterado: string;
-
 begin
     if lbArquivos.ItemIndex = -1 then
       Exit;
-
 
     vExtensao := ExtractFileExt(lbArquivos.Items[lbArquivos.ItemIndex]);
     vNomeArquivo := ExtractFileName(lbArquivos.Items[lbArquivos.ItemIndex]);
@@ -239,9 +225,6 @@ begin
        filename := edtProgramEdit.text;
        ShellExecute(handle,'open',PChar(filename),PChar(vNomeArquivoAlterado),'',SW_SHOWNORMAL);
      end;
-
-
-
 end;
 
 end.
